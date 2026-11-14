@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="212" height="148" viewBox="-6 -6 212 148"><defs><pattern id="air" width="28" height="28" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+<rect width="28" height="28" fill="#fff"/><rect width="7" height="28" fill="#FF85AE"/><rect x="14" width="7" height="28" fill="#B7CCFF"/></pattern></defs><g stroke="#fff" stroke-width="9.4" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="9" width="190" height="118" rx="14" fill="#fff"/>
+<rect x="12" y="16" width="176" height="104" rx="8" fill="#fff" stroke-width="8.4"/>
+<path d="M13 22 Q14 17 20 17 H180 Q186 17 187 22 L106 76 Q100 80 94 76Z" fill="#fff"/>
+<path d="M14 116 L78 68 M186 116 L122 68" fill="none" stroke-width="8.6"/>
+<circle cx="100" cy="78" r="18" fill="#fff"/><path d="M100 85.7 C89.2 78.1 95.2 69.3 100 75.7 C104.8 69.3 110.8 78.1 100 85.7Z" fill="#fff" stroke-width="8.8"/></g><g stroke="#84506F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="9" width="190" height="118" rx="14" fill="url(#air)"/>
+<rect x="12" y="16" width="176" height="104" rx="8" fill="#FFFFFF" stroke-width="1.4"/>
+<path d="M13 22 Q14 17 20 17 H180 Q186 17 187 22 L106 76 Q100 80 94 76Z" fill="#FFE9F1"/>
+<path d="M14 116 L78 68 M186 116 L122 68" fill="none" stroke-width="1.6" opacity=".5"/>
+<circle cx="100" cy="78" r="18" fill="#FF85AE"/><path d="M100 85.7 C89.2 78.1 95.2 69.3 100 75.7 C104.8 69.3 110.8 78.1 100 85.7Z" fill="#fff" stroke-width="1.8"/></g></svg>
