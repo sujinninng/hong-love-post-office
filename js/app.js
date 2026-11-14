@@ -471,7 +471,7 @@
       '<div class="list">' +
         '<button class="btn white press" data-action="replay">생일 선물 이벤트 다시 보기</button>' +
         '<a class="btn white press" href="#letter-welcome">첫 번째 편지 다시 읽기</a>' +
-        '<div class="panel"><h2>소리</h2><p>배경음악과 버튼 효과음이에요. 아이폰은 옆면 무음 스위치가 켜져 있으면 소리가 나지 않아요.</p>' +
+        '<div class="panel"><h2>소리</h2><p>배경음악과 버튼 효과음이에요. 소리가 안 들리면 휴대폰 옆 버튼으로 미디어 음량을 올려 주세요.</p>' +
           '<button class="btn small ' + (SND.isOn() ? 'white' : 'lemon') + ' press" data-action="sound-setup">' + (SND.isOn() ? '소리 끄기' : '소리 켜기') + '</button></div>' +
         '<div class="panel"><h2>홈 화면에 우체국 놓기</h2><ol><li>아이폰: 사파리 아래쪽 공유 버튼을 누르고 "홈 화면에 추가"</li><li>갤럭시: 크롬이나 삼성 인터넷의 메뉴(점 세 개 또는 줄 세 개)에서 "홈 화면에 추가"</li></ol></div>' +
         '<div class="panel"><h2>이 휴대폰의 기록</h2><p>열어 본 편지 표시와 뽑은 쿠폰은 이 휴대폰에만 저장돼요. 다른 휴대폰과는 따로 기록됩니다.</p>' +

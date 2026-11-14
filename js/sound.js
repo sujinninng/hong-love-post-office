@@ -53,6 +53,26 @@
   }
 
   var on = true, ctx = null, G = null, timer = null, nextT = 0, step = 0;
+  var IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var keep = null;
+  function silentWav() { // one second of silence (8 kHz, mono, 8-bit)
+    var n = 8000, b = new Uint8Array(44 + n), v = new DataView(b.buffer);
+    function w(o, t) { for (var i = 0; i < t.length; i++) b[o + i] = t.charCodeAt(i); }
+    w(0, 'RIFF'); v.setUint32(4, 36 + n, true); w(8, 'WAVEfmt '); v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+    v.setUint32(24, 8000, true); v.setUint32(28, 8000, true); v.setUint16(32, 1, true); v.setUint16(34, 8, true); w(36, 'data'); v.setUint32(40, n, true);
+    for (var i = 44; i < b.length; i++) b[i] = 128;
+    return URL.createObjectURL(new Blob([b], { type: 'audio/wav' }));
+  }
+  // iPhone mutes Web Audio while the side switch is on silent. Treat this as media playback (like a video) so the music is heard:
+  // newer iOS has navigator.audioSession; older iOS needs a silent looping <audio> element playing alongside.
+  function mediaMode() {
+    try { if (navigator.audioSession) { navigator.audioSession.type = 'playback'; return; } } catch (e) {}
+    if (!IOS) return;
+    try {
+      if (!keep) { keep = document.createElement('audio'); keep.setAttribute('playsinline', ''); keep.loop = true; keep.src = silentWav(); }
+      var p = keep.play(); if (p && p.catch) p.catch(function () {});
+    } catch (e) {}
+  }
   try { var v = localStorage.getItem('lpo.sound'); if (v != null) on = JSON.parse(v) !== false; } catch (e) {}
   function mark() { try { document.documentElement.setAttribute('data-sound', on ? (ctx ? ctx.state : 'waiting') : 'off'); } catch (e) {} }
   function tick() {
@@ -62,6 +82,7 @@
   }
   function start() {
     if (!on || !AC) return;
+    mediaMode();
     try {
       if (!ctx) {
         ctx = new AC(); G = graph(ctx);
@@ -77,6 +98,7 @@
   }
   function stop() {
     if (timer) { clearInterval(timer); timer = null; }
+    try { if (keep) keep.pause(); } catch (e) {}
     try { if (ctx && ctx.state === 'running') { var p = ctx.suspend(); if (p && p.then) p.then(mark, function () {}); } } catch (e) {}
     mark();
   }
